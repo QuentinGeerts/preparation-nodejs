@@ -1,0 +1,18 @@
+{
+  "name": "demo-npm",
+  "version": "1.0.0",
+  "description": "Ceci est une demo de la création d'un projet via \"npm init\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "demo",
+    "npm"
+  ],
+  "author": "Quentin",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}

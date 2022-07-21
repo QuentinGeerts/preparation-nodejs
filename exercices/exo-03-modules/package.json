@@ -1,0 +1,15 @@
+{
+  "name": "exo-modules",
+  "version": "1.0.0",
+  "description": "Exercice sur les modules NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "exercice",
+    "module"
+  ],
+  "author": "Quentin",
+  "license": "ISC"
+}
