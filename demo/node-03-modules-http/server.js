@@ -12,6 +12,9 @@ const server = http.createServer((request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/plain' })
 
   // - Envoie le contenu String
+  response.write('Hello')
+  response.write('World !')
+  
   // response.end('Hello les WebApps ! :-) ')
   // response.end('Hello les WebApps ! :-) ☺')
   response.end('Hello les WebApps ! :)', 'ascii')
