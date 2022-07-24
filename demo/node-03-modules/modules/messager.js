@@ -1,19 +1,35 @@
+const moment = require('moment')
+// require('moment/locale/fr') // Pour importer la partie FR
+
 const messager = {
 
-  hello: () => {
-    console.log("Bienvenue sur l'application !")
+  start: () => {
+    console.log('L\'application a démarré')
   },
 
-  say: (msg) => {
-    console.log(`Message : ${msg}`)
+  stop: () => {
+    console.log('L\'application s\'arrête')
   },
 
-  goodbye: () => {
-    const today = new Date()
+  // messager.send('Hello World'); → [27/08 - 14:15] Hello World
+  send: (message) => {
+    const now = new Date()
 
-    if (today.getHours() < 17) console.log("Au revoir !")
-    else if (today.getHours() < 22) console.log("Bonne soirée ! Bye.")
-    else console.log("Bonne nuit !")
+    const date = now.getDate()
+    const month = now.getMonth() + 1
+    const hours = now.getHours()
+    const minutes = now.getMinutes()
+
+    console.log(`[${date}/${month} - ${hours}:${minutes}] ${message}`)
+  },
+
+  send2: (message) => {
+    const now = moment().format('DD/MM - HH:mm')
+
+    // Avec l'import de la partie FR
+    // const now = moment().format('dddd DD MMMM - HH:mm') 
+
+    console.log(`[${now}] ${message}`)
   }
 
 }

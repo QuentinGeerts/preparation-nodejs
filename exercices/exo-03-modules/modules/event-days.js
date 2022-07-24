@@ -9,13 +9,13 @@ const getDateToUse = (month, date) => {
   return new Date(yearUse, month, date)
 }
 
-const getDiffDays = (target) => {
+const getDiffDays = (eventDate) => {
   const today = new Date()
 
-  if (target.getMonth() === today.getMonth()
-    && target.getDate() == today.getDate()) return
+  if (eventDate.getMonth() === today.getMonth()
+    && eventDate.getDate() == today.getDate()) return
 
-  const diff = target.getTime() - today.getTime()
+  const diff = eventDate.getTime() - today.getTime()
   const oneDay = 1000 * 60 * 60 * 24
 
   return Math.ceil(diff / oneDay)
