@@ -1,7 +1,13 @@
 const fs = require('fs')
+const path = require('path')
+
+// Création du "filename" via le module 'path' de NodeJS
+const filename = path.resolve('data', 'todo.txt')
+console.log(`Le fichier est dispo sur : '${filename}'`)
+
 
 // fs.readFile('./data/todos.txt', (err, data) => {
-fs.readFile('./data/todo.txt', (err, data) => {
+fs.readFile(filename, (err, data) => {
   console.info('> Lecture d\'un fichier')
 
   if (err) {
@@ -14,7 +20,7 @@ fs.readFile('./data/todo.txt', (err, data) => {
   console.log(data.toString())
 })
 
-fs.stat('./data/todo.txt', (err, stats) => {
+fs.stat(filename, (err, stats) => {
 
   console.info('-> Lecture des metadatas du fichier')
 

@@ -90,26 +90,40 @@ const getAvgStudents = (results) => {
   )
 }
 
+const numberToString = (number) => {
+  return number.toLocaleString('fr-BE', { maximumFractionDigits: 2 })
+}
+
 // Lecture du fichier
 readJsonFile('./data/students.json')
   .then(({ results }) => {
 
     // > Récupération de la liste des professeurs
     const profs = getProfList2(results)
-    console.log('\nProfs : ', profs)
+    // console.log('\nProfs : ', profs)
+    console.log("\nListe des professeurs :");
+    for (const prof of profs) {
+      console.log(` - ${prof.lastname} ${prof.firstname}`);
+    }
 
     // > Récupération de la liste des étudiants
     const students = getStudentList(results)
-    console.log('\nStudents : ', students)
+    // console.log('\nStudents : ', students)
+    console.log("\nListe des élèves :");
+    for (const student of students) {
+      console.log(` - ${student.lastname} ${student.firstname}`);
+    }
 
     // > Récupération de la moyenne par section
     const sections = getAvgSection(results)
+    console.log("\nMoyenne par section :");
     for (const section of sections) {
-      console.log(`\nSection ${section.code} ${section.name} - Moyenne ${section.avg}`)
+      console.log(` - Section ${section.code} ${section.name} - Moyenne ${numberToString(section.avg)}`)
     }
 
     // > Récupération de la moyenne générale des étudiants
     const avgStudents = getAvgStudents(results)
     console.log('\nMoyenne générale : ', avgStudents);
+    console.log('Moyenne générale : ', numberToString(avgStudents));
 
   })
