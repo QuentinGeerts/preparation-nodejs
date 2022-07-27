@@ -1,0 +1,35 @@
+<%- include('../../partials/header.ejs') -%>
+
+<h3>Formulaire d'ajout d'étudiant</h3>
+
+<form action="/student/add" method="POST" name="add-student">
+
+  <label for="lastname">Nom :</label>
+  <input type="text" name="lastname" id="lastname" required>
+
+  <label for="firstname">Prénom :</label>
+  <input type="text" name="firstname" id="firstname" required>
+
+  <label for="year_result">Résultat :</label>
+  <input type="text" name="year_result" id="year_result">
+
+  <input type="submit" value="Ajouter" id="btnSubmit">
+
+</form>
+
+<script>
+
+  // Code JS pour le client
+  const inputResult = document.forms['add-student'].year_result
+  const btnSubmit = document.getElementById('btnSubmit')
+
+  // console.log('inputResult :>> ', inputResult);
+
+  inputResult.addEventListener('keyup', (e) => {
+    const isOk = inputResult.value === '' || !isNaN(parseFloat(inputResult.value))
+    btnSubmit.disabled = !isOk
+  })
+
+</script>
+
+<%- include('../../partials/footer.ejs') -%>

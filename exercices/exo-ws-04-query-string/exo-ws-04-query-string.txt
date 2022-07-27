@@ -1,0 +1,16 @@
+Créer un serveur web simple
+***************************
+
+Créer un serveur web qui a comme page d'accueil un formulaire qui demande :
+  - Prénom
+  - Nom
+  - Date de naissance
+  - Sexe (sous forme de radio button)
+
+Une fois que l'utilisateur a validé, le serveur renvoie sur une autre page :
+ - "M./Mme Prénom Nom à XX ans"
+
+Le webserver répond à la demande du navigateur pour le "favicon".
+
+Le webserver doit être configuré avec un package.json
+et il doit utiliser "nodemon"
