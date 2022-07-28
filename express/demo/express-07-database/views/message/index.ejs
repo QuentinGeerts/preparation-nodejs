@@ -1,0 +1,13 @@
+<%- include('../partials/_header.ejs') %> 
+
+<h1>La liste des messages</h1>
+
+<dl>
+  <% for (const message of messages) { %>
+    <dt><%= message.pseudo %></dt>
+    <dd><%= message.content %></dd>
+    <dd><%= message.createdAt %></dd>
+  <% } %> 
+</dl>
+
+<%- include('../partials/_footer.ejs') %> 

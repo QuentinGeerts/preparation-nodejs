@@ -1,57 +1,42 @@
-const express = require('express')
-const yup = require('yup')
+const { contactValidator } = require('../form-validation/contact-validator')
+const authorData = require('../data/author.json')
 
-// Création d'un objet "homeController" avec des méthodes
+
 const homeController = {
 
-  /**
-   * Méthode du controller pour l'index
-   * @param {express.Request} req
-   * @param {express.Response} res
-   */
   index: (req, res) => {
-    res.render('home/index')
-  }
-  ,
-
-  about: (req, res) => {
-    const author = { firstname: 'Zaza', lastname: 'Vanderquack' }
-
-    res.render('home/about', {
-      firstname: author.firstname,
-      lastname: author.lastname
-    })
-
+    const data = {
+      fullname: authorData.firstname + ' ' + authorData.lastname,
+      image: authorData.image
+    }
+    res.render('home/index', data)
   },
 
-  contactGet: (req, res) => {
-    const categories = ['frontend', 'backend', 'db']
-
-    res.render('home/contact', { categories })
+  contact: (req, res) => {
+    res.render('home/contact')
   },
 
   contactPost: (req, res) => {
-    // Récupération des données envoyées par la requête POST
-    // Rappel : Nécessite le middleware express.urlencoded()
-    console.log(req.body)
-
-    // Création d'un schéma de validation via "yup"
-    const schemaBody = yup.object().shape({
-      email: yup.string().required().email(),
-      category: yup.string().required(),
-      message: yup.string().required()
-    })
-
-    // Validation des données du body (POST) via le schema yup
-    if (schemaBody.isValidSync(req.body)) {
-      res.render('home/contactResponse', { email: req.body.email })
+    if (!contactValidator.isValidSync(req.body)) {
+      res.redirect('/contact')
+      return
     }
-    else {
-      res.redirect("/contact")
+
+    // Cas pratique => Save in Database
+    console.log("body: ", req.body)
+
+    // Dans le cas d'un fichier, utiliser les données de "req.file" 
+    // pour ajouter des informations en DB (originalName, fileName, ...)
+    console.log("file: ", req.file)
+
+    const data = {
+      pseudo: req.body.pseudo,
+      nbPerson: req.body.nbPerson,
+      myFile: 'images/' + req.file.filename
     }
+    res.render('home/contactResponse', data)
   }
 
 }
 
-// Exportation du "homeController"
 module.exports = homeController

@@ -1,38 +1,35 @@
-<%- include('../partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
 
-  <h1>Page Contact 📕</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
 
-  <form method="post">
+<body>
+    <h1>Page de contact</h1>
 
-    <div>
-      <label for="email">Email :</label>
-      <input type="email" name="email" id="email" required>
-    </div>
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            <label for="pseudo">Pseudo</label>
+            <input type="text" id="pseudo" name="pseudo">
+        </div>
+        <div>
+            <label for="nbPerson">Nombre de Personne</label>
+            <input type="number" name="nbPerson" id="nbPerson">
+        </div>
+        <div>
+            <input type="file" name="myFile">
+        </div>
+        <div>
+            <button type="submit">Envoyer le formulaire</button>
+        </div>
+    </form>
 
-    <div>
-      <label for="category">Catégorie :</label>
-      <select name="category" id="category" required>
-        <option value="" disabled selected>Vos besoins</option>
+</body>
 
-        <% categories.forEach((category)=> { %>
-          <option value="<%= category %>">
-            <%= category %> 
-          </option>
-          <% }) %>
-
-      </select>
-    </div>
-
-    <div>
-      <label for="message">Message :</label>
-      <textarea name="message" id="message" required></textarea>
-    </div>
-
-    <div>
-      <button type="submit">Envoyer</button>
-      <button type="reset">Effacer</button>
-    </div>
-
-  </form>
-
-  <%- include('../partials/_footer.ejs') %>
+</html>

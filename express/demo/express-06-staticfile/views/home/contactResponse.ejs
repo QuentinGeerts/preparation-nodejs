@@ -1,8 +1,22 @@
-<%- include('../partials/_header.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>Page de contact</h1>
-<p>Merci de nous avoir contacté, <%= email %>.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+</head>
 
-<a href="/">Retour à la page d'accueil</a>
+<body>
+    <h1>Page de contact</h1>
 
-<%- include('../partials/_footer.ejs') %>
+    <p>Merci <%= pseudo %>  de nous avoir contacté.</p>
+    <p>Le nombre de personnes est : <%= nbPerson %> </p>
+
+    <img src="<%= myFile %>" alt="" width="300">
+</body>
+
+</html>

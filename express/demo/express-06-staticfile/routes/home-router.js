@@ -1,24 +1,29 @@
-const express = require('express')
 const homeController = require('../controllers/home-controller')
+const homeRouter = require('express').Router()
 
-// Création du router de la zone "home".
-// Celui-ci est dédié au routing
-// => Son objectif est d'envoyer vers la bonne méthode du controller
-const homeRouter = express.Router()
+const path = require('path')
 
-// Définition des routes
+// Ajout de multer pour gérer les formulaires "multipart/form-data"
+const multer = require('multer')
 
-// - Page d'accueil
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/images')
+  },
+  filename: (req, file, cb) => {
+    console.log(file)
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+})
+
+
+// - Configuration du middleware
+const upload = multer({ storage: storage })
+
 homeRouter.get('/', homeController.index)
-homeRouter.get(['/home', '/index'], (req, res) => res.redirect('/'))
+homeRouter.get('/contact', homeController.contact)
 
-// - Page About
-homeRouter.get('/about', homeController.about)
+// Injection du middlware de multer
+homeRouter.post('/contact', upload.single('myFile'), homeController.contactPost)
 
-// - Page Contact
-homeRouter.route('/contact')
-  .get(homeController.contactGet)
-  .post(homeController.contactPost)
-
-// Exportation du module "homeRouter"
-module.exports = homeRouter
+module.exports = homeRouter 

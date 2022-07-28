@@ -1,38 +1,25 @@
-const express = require('express')
-const path = require('path')
+const express = require('express');
 const homeRouter = require('./routes/home-router')
 
-const logger = require('./middlewares/logger-middleware')
-
-// Variable de config
-const port = 8080
-const rootDir = process.cwd()
+// Création du serveur
+const app = express();
 
 
-// Créer le server web
-const app = express()
+// Pour gérer les formulaires "application/x-www-form-urlencoded"
+app.use(express.urlencoded({ extended: true }));
 
-// Configurer le moteur de vue
-// - Express va utiliser le moteur de vue automatiquement
-app.set('view engine', 'ejs')
-// - Configuration du répertoire dans lequel sont les vues
-app.set('views', path.resolve(rootDir, 'views'))
-
-// Ajout d'un middleware
-app.use(logger())
-
-// Ajout d'un middleware pour gérer les requêtes "x-www-form-urlencoded" (encodé sous forme de clef/valeurs)
-// NB : Anciennement, il était nécessaire d'installer "body-parser"
-app.use(express.urlencoded({ extended: true }))
-// ↑ Ceci ajout l'objet 'body' dans l'objet 'req'
+// Utilisation du moteur de vue 'EJS' 
+// => Configure le fonctionnement de la méthode "res.render(...)"
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
 // Ajout du dossier public
-app.use(express.static('public'))
+app.use(express.static('public'));
 
-// Ajout des routers
-app.use(homeRouter)
+// Ajout du systeme de route
+app.use(homeRouter);
 
-// Démarrage du server
-app.listen(port, () => {
-  console.log(`Server up on port ${port}`)
-})
+// Lancement du serveur
+app.listen(8080, () => {
+    console.log('Server up !');
+});
