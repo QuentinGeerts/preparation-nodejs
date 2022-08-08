@@ -1,0 +1,29 @@
+Exercice récapitulatif
+----------------------
+
+
+Vous devez créer un web server avec toutes les notions vues au cours de NodeJS et Express.
+
+Choisissez un domaine qui vous intéresse (ex : todo-list, un petit forum, un site e-commerce, etc..)
+et il ne doit pas être trop compliqué pour le réaliser. (vous avez jusqu'à 15h00-30).
+Une petite présentation sera à faire en fin de journée.
+
+Le web server devra être basé sur le pattern MVC relié à une base de données.
+Le routing devra être implémenté pour naviguer entre les pages.
+Les fichiers static devront être gérés (images et favicon)
+
+Pour la base de données, sauvegardez vos scripts dans un fichier.
+
+L'application doit être configurée avec NPM.
+
+Vous devrez utiliser : 
+
+  • Dépendance dev :
+    - nodemon
+    
+  • Dépendances : 
+    - express
+    - ejs
+    - promise-mysql
+    - yup
+
